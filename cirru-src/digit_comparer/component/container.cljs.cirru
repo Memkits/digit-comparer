@@ -7,37 +7,44 @@ ns digit-comparer.component.container $ :require
 def style-app $ {} (:position |absolute)
   :width |100%
   :height |100%
-  :background-color $ hsl 80 20 90
+  :background-color $ hsl 80 20 96
   :display |flex
 
 def style-column $ {} $ :flex |1
 
-def style-column-large $ {} $ :flex |3
+def style-column-large $ {} (:flex |3)
+  :overflow |hidden
 
 def style-text $ {} (:width |100%)
+  :min-width |300px
   :border |none
   :outline |none
   :padding "|4px 8px"
-  :font-size |14px
+  :font-size |16px
+  :line-height |24px
   :min-height |200px
+  :flex-shrink |0
 
-defn parse-line (text-line)
+defn parse-line (index text-line)
   let
     (number-part $ re-find (re-pattern |\d+$) (, text-line))
 
-    .log js/console "|Number part:" number-part
+    -- .log js/console "|Number part:" number-part
     if (some? number-part)
-      [] (js/parseInt number-part)
-        -> text-line
-          string/replace (re-pattern |\d+$)
-            , |
-          .trim
+      []
+        str (js/parseInt number-part)
+          , |- index
+        [] (js/parseInt number-part)
+          -> text-line
+            string/replace (re-pattern |\d+$)
+              , |
+            .trim
 
       [] 0 text-line
 
 defn parse-user-draft (text)
   let
-    (lines $ ->> text (string/split-lines) (map $ fn (x) (.trim x)) (filter $ fn (x) (not $ empty? x)) (map parse-line) (into $ {}))
+    (lines $ ->> text (string/split-lines) (map $ fn (x) (.trim x)) (filter $ fn (x) (not $ empty? x)) (map-indexed parse-line) (into $ {}))
 
     , lines
 

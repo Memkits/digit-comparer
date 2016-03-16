@@ -10,8 +10,8 @@
                  [differ "0.2.2"]
                  [mvc-works/hsl "0.1.2"]
                  [org.clojure/core.async "0.2.374"]
-                 [mvc-works/respo "0.1.4"]
-                 [mvc-works/respo-client "0.1.4"]]
+                 [mvc-works/respo "0.1.5"]
+                 [mvc-works/respo-client "0.1.5"]]
   :plugins [[cirru/lein-sepal "0.0.18"]
             [mvc-works/lein-html-entry "0.0.2"]
             [lein-cljsbuild "1.1.3"]
@@ -22,7 +22,7 @@
   :main ^:skip-aot digit-comparer.core
   :target-path "target/%s"
   :cljsbuild {:builds {:web-dev {:source-paths ["src"]
-                             :figwheel {:websocket-host "repo"
+                             :figwheel {:websocket-host "frp.im"
                                         :on-jsload "digit-comparer.core/fig-reload"}
                              :compiler {:main digit-comparer.core
                                         :asset-path "cljs/out"
