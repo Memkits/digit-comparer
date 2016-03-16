@@ -20,13 +20,16 @@ defn render-element ()
     [] container-component $ {} :store @global-store
     , @global-states
 
+defn intent (op-type op-data)
+  .log js/console op-type op-data
+
 defn get-mount-point ()
   .querySelector js/document |#app
 
 declare rerender-app
 
 defn get-deliver-event ()
-  build-deliver-event global-element global-store global-states updater rerender-app
+  build-deliver-event global-element intent global-states rerender-app
 
 defn mount-app ()
   let
