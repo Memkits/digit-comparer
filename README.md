@@ -1,36 +1,34 @@
+
 # digit-comparer
 
-FIXME: description
+Small app to display digits in bar chart.
 
-## Installation
+Demo http://frp.im/Memkits/digit-comparer/resources/public/
 
-Download from http://example.com/FIXME.
+> It's a prototype, still WIP.
 
-## Usage
+## Build
 
-FIXME: explanation
+```bash
+lein cirru-sepal # need to create folder manually, my fault
+lein html-entry
+lein cljsbuild once web-prod
+# visit resources/public/index.html
+```
 
-    $ java -jar digit-comparer-0.1.0-standalone.jar [args]
+## Develop
 
-## Options
-
-FIXME: listing of options this app accepts.
-
-## Examples
-
-...
-
-### Bugs
-
-...
-
-### Any Other Sections
-### That You Think
-### Might be Useful
+```bash
+lein cirru-sepal # need to create folder manually, my fault
+lein html-entry
+lein cirru-sepal watch
+rlwrap lein figwheel web-dev
+# visit resources/public/index.html
+```
 
 ## License
 
-Copyright © 2016 FIXME
+Copyright © 2016 jiyinyiyong
 
 Distributed under the Eclipse Public License either version 1.0 or (at
 your option) any later version.
